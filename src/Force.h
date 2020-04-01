@@ -302,8 +302,8 @@ public:
             Eigen::VectorXd mu(2);
             Eigen::MatrixXd sigma(2, 2);
 
-            mu(0) = 4.;
-            mu(1) = 4.;
+            mu(0) = 3.5;
+            mu(1) = 8.;
             sigma(0, 0) = 2.;
             sigma(0, 1) = 0.;
             sigma(1, 0) = 0.;
@@ -320,12 +320,12 @@ public:
             Mvn gauss1(mu, sigma);
             _mvn.push_back(gauss1);
 
-            mu(0) = 19.;
-            mu(1) = 19.;
-            sigma(0, 0) = 5.5;
+            mu(0) = 5.75;
+            mu(1) = 10.25;
+            sigma(0, 0) = 2.;
             sigma(0, 1) = 0.;
             sigma(1, 0) = 0.;
-            sigma(1, 1) = 5.5;
+            sigma(1, 1) = .85;
             Mvn gauss2(mu, sigma);
             _mvn.push_back(gauss2);
 
