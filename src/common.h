@@ -34,15 +34,14 @@ public:
     ~Mvn() {}
 
     double form(const Eigen::VectorXd &x) {
-        double n = x.rows();
-        double sqrt2pi = std::sqrt(2 * M_PI);
-        double quadform = (x - mean).transpose() * sigma.inverse() * (x - mean);
+        double quadform = (x - mean).transpose() *
+                          sigma.inverse() * (x - mean);
 
         return exp(-0.5 * quadform);
     }
 
     double pdf(const Eigen::VectorXd &x) {
-        double norm = std::pow(sqrt2pi, -n) *
+        double norm = std::pow(sqrt2pi, -0.5 * n) *
                       std::pow(sigma.determinant(), -0.5);
 
         return norm * form(x);
