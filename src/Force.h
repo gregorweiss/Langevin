@@ -290,19 +290,17 @@ public:
                   const vector<double> &p,
                   const double s,
                   const parcl<double> &z) : Force(d, p, s, z),
-                                            _m(5) {
+                                            _m(3) {
         for (auto i = 0; i < (this->_m); ++i) {
 
             this->_c.push_back(2.);
             this->_c.push_back(2.);
             this->_c.push_back(2.);
-            this->_c.push_back(1.2);
-            this->_c.push_back(1.);
 
             Eigen::VectorXd mu(2);
             Eigen::MatrixXd sigma(2, 2);
 
-            mu(0) = 3.5;
+            mu(0) = 3.0;
             mu(1) = 8.;
             sigma(0, 0) = 2.;
             sigma(0, 1) = 0.;
@@ -328,33 +326,6 @@ public:
             sigma(1, 1) = .85;
             Mvn gauss2(mu, sigma);
             _mvn.push_back(gauss2);
-
-            mu(0) = 10.;
-            mu(1) = 20.;
-            sigma(0, 0) = 10.;
-            sigma(0, 1) = 0.;
-            sigma(1, 0) = 0.;
-            sigma(1, 1) = 1.;
-            Mvn gauss3(mu, sigma);
-            _mvn.push_back(gauss3);
-
-            mu(0) = 20.;
-            mu(1) = 10.;
-            sigma(0, 0) = 1.;
-            sigma(0, 1) = 0.;
-            sigma(1, 0) = 0.;
-            sigma(1, 1) = 10.;
-            Mvn gauss4(mu, sigma);
-            _mvn.push_back(gauss4);
-
-            mu(0) = 11.;
-            mu(1) = 11.;
-            sigma(0, 0) = 10.;
-            sigma(0, 1) = 0.;
-            sigma(1, 0) = 0.;
-            sigma(1, 1) = .85;
-            Mvn gauss5(mu, sigma);
-            _mvn.push_back(gauss5);
         }
     };
 

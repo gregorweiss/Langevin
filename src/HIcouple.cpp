@@ -73,10 +73,8 @@ double EmptyHI::func(particle_ptr p_i, particle_ptr p_j) {
 double NoHI::func(particle_ptr p_i, particle_ptr p_j) {
     if (p_i == p_j) {
         return p_i->diffusivity() / kBToverPiEta;
-
     } else {
         return 0.;
-
     }
 }
 
