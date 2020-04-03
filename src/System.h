@@ -110,8 +110,6 @@ public:
 
     parcl<double> operator()(const size_t, const size_t);
 
-    void umbrella(const size_t, const size_t, const double, const double);
-
     // 'Herzstück' implementing the Ermak-McCammon algorithm
     void iterate();
 

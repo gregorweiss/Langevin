@@ -76,9 +76,9 @@ void System::iterate() {
             delta_dt.at(i) += (random_dt.at(j) * sigma_ij);
         }
 
-        for (size_t j = i; j < nop; j++) {
+        for (size_t j = i+1; j < nop; j++) {
             parcl<double> D_ij(cpl->operator()(i, j));
-            delta_dt.at(i) += force_dt.at(j) * D_ij;
+            delta_dt.at(i) += (force_dt.at(j) * (D_ij / (_kB * _temp)));
         }
     }
     force_dt.clear();
@@ -180,8 +180,6 @@ void System::add_particle(const parcl<double> &pos,
     rhs_extern.push_back(vector<force_ptr>());
     rhs_pair.push_back(vector<force_ptr>());
     state_extern.push_back(vector<double>());
-
-    //cout << lhs[0]->diffusivity() << endl;
 }
 
 // Adds a particle at th initial position 'pos' with hydrodynamic radius 'size'

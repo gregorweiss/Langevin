@@ -57,7 +57,7 @@ parcl<double> GaussEnvelope::operator()(vector<parcl<double> > &vec) {
 
     double denominator(0.0);
     Eigen::VectorXd ret(2);
-    for (auto i = 0; i < this->_m; ++i) {
+    for (auto i = 0; i < this->_c.size(); ++i) {
         denominator += _c[i] * _mvn[i].form(x);
         ret -= _c[i] * _mvn[i].gradient(x);
     }

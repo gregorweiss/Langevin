@@ -23,13 +23,9 @@ void HIcouple::gen(vector<particle_ptr> prtcls) {
 
 double HIcouple::operator()(size_t i, size_t j) {
     if (i >= j) {
-
         return Dtensor[i][j];
-
     } else if (i < j) {
-
         return Dtensor[j][i];
-
     }
 
     return 0.;
@@ -58,10 +54,7 @@ void HIcouple::gen_Stensor() {
             for (int k = 0; k < j - 1; k++) {
                 sigma_ij -= Stensor[i][k] * Stensor[j][k];
             }
-
-            sigma_ij /= Stensor[j][j];
-
-            Stensor[i][j] = sigma_ij;
+            Stensor[i][j] = sigma_ij / Stensor[j][j];
         }
     }
 }
@@ -80,8 +73,7 @@ double NoHI::func(particle_ptr p_i, particle_ptr p_j) {
 
 double RPY::func(particle_ptr p_i, particle_ptr p_j) {
     double ai_plus_aj(p_i->radius() + p_j->radius());
-    double ai_diff_aj(sqrt(pow(p_i->radius()
-                               - p_j->radius(), 2.)));
+    double ai_diff_aj(sqrt(pow(p_i->radius() - p_j->radius(), 2.)));
     parcl<double> dr(p_i->last() - p_j->last());
     double dist(dr * dr);
     dist = sqrt(dist);

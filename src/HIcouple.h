@@ -17,7 +17,7 @@ public:
             scale(),
             myPi(3.141592654),
             kB(scale.kB),
-            temp(300. / scale.T),
+            temp(300. ), // / scale.T),
             eta(1e-3 * scale.lambda * scale.tau / scale.kBT),
             kBToverPiEta(scale.kB * temp / (myPi * eta)),
             Dtensor(vector<vector<double> >()),

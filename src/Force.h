@@ -291,42 +291,40 @@ public:
                   const double s,
                   const parcl<double> &z) : Force(d, p, s, z),
                                             _m(3) {
-        for (auto i = 0; i < (this->_m); ++i) {
 
-            this->_c.push_back(2.);
-            this->_c.push_back(2.);
-            this->_c.push_back(2.);
+        this->_c.push_back(2.);
+        this->_c.push_back(2.);
+        this->_c.push_back(2.);
 
-            Eigen::VectorXd mu(2);
-            Eigen::MatrixXd sigma(2, 2);
+        Eigen::VectorXd mu(2);
+        Eigen::MatrixXd sigma(2, 2);
 
-            mu(0) = 3.0;
-            mu(1) = 8.;
-            sigma(0, 0) = 2.;
-            sigma(0, 1) = 0.;
-            sigma(1, 0) = 0.;
-            sigma(1, 1) = .85;
-            Mvn gauss0(mu, sigma);
-            _mvn.push_back(gauss0);
+        mu(0) = 3.0;
+        mu(1) = 8.;
+        sigma(0, 0) = 2.;
+        sigma(0, 1) = 0.;
+        sigma(1, 0) = 0.;
+        sigma(1, 1) = .85;
+        Mvn gauss0(mu, sigma);
+        _mvn.push_back(gauss0);
 
-            mu(0) = 8.;
-            mu(1) = 8.;
-            sigma(0, 0) = 2.;
-            sigma(0, 1) = 0.;
-            sigma(1, 0) = 0.;
-            sigma(1, 1) = .85;
-            Mvn gauss1(mu, sigma);
-            _mvn.push_back(gauss1);
+        mu(0) = 8.;
+        mu(1) = 8.;
+        sigma(0, 0) = 2.;
+        sigma(0, 1) = 0.;
+        sigma(1, 0) = 0.;
+        sigma(1, 1) = .85;
+        Mvn gauss1(mu, sigma);
+        _mvn.push_back(gauss1);
 
-            mu(0) = 5.75;
-            mu(1) = 10.25;
-            sigma(0, 0) = 2.;
-            sigma(0, 1) = 0.;
-            sigma(1, 0) = 0.;
-            sigma(1, 1) = .85;
-            Mvn gauss2(mu, sigma);
-            _mvn.push_back(gauss2);
-        }
+        mu(0) = 5.75;
+        mu(1) = 10.25;
+        sigma(0, 0) = 2.;
+        sigma(0, 1) = 0.;
+        sigma(1, 0) = 0.;
+        sigma(1, 1) = .85;
+        Mvn gauss2(mu, sigma);
+        _mvn.push_back(gauss2);
     };
 
     ~GaussEnvelope() {};
